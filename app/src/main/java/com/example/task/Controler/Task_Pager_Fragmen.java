@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.task.MyListActivity;
 import com.example.task.R;
 
-public class MyTaskActivity extends AppCompatActivity {
+public class Task_Pager_Fragmen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,4 +29,7 @@ fragmentManager
       //  startActivity(new Intent(getActivity() MyListActivity.class).putExtra("bundle_key", bundle));
 
     }}
+
+    public static class MyListFragment extends Activity {
+    }
 }

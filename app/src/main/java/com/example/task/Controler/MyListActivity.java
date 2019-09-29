@@ -1,10 +1,12 @@
-package com.example.task;
+package com.example.task.Controler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+
+import com.example.task.R;
 
 public class MyListActivity extends AppCompatActivity {
 

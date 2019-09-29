@@ -4,10 +4,10 @@ package com.example.task.Controler;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-import com.example.task.MyListActivity;
-import com.example.task.Model.Information;
+import com.example.task.Model.MyTask;
+import com.example.task.Model.State;
 import com.example.task.R;
 
 
@@ -29,9 +29,10 @@ public class MyTask_Fragment extends Fragment {
     public static final String YOUR_TASK = "your_task";
     public static final String YOUR_NUM = "your_num";
     ///////////////////////////////////////////
-    private Information mInformation;
+    private MyTask mMyTask;
     private EditText mEditText_Task;
     private EditText mEditText_Num;
+
     private Button mButton_Show;
     //////////////////////////////////////
     public MyTask_Fragment() {
@@ -41,9 +42,13 @@ public class MyTask_Fragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /* mInformation = new Information();
-        mInformation.setName(" Wash dishes ");
-        mInformation.setState(State.Todo)*/;
+       /* mMyTask = new MyTask();
+        mMyTask.setName(" Wash dishes ");
+        mMyTask.setState(State.Todo)*/;
+//getActivity().getIntent().getSerializableExtra(My_ID)
+MyTask myNum=new MyTask();
+myNum.setName(" Cleaning");
+myNum.setState(State.Doing);
     }
 ///////////////////////////////////////////////////////////
 
@@ -60,34 +65,27 @@ public class MyTask_Fragment extends Fragment {
         mButton_Show.setEnabled(true);
 
        mButton_Show.setOnClickListener(new View.OnClickListener() {
-            @Override
+
+
+           @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getActivity(), MyListActivity.class);
-                intent.putExtra(YOUR_TASK,mEditText_Task.getText().toString());
-                startActivity(intent);
+               Intent intent = new Intent(getActivity(), MyListActivity.class);
+               int number = Integer.parseInt(mEditText_Num.getText().toString());
+               intent.putExtra(YOUR_TASK  ,  mEditText_Task.getText().toString());
+               intent.putExtra(YOUR_NUM , number);
+               Editable str=mEditText_Task.getText();
+               Editable i=mEditText_Num.getText();
 
+               startActivity(intent);
 
-          /*      Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-                intent.putExtra("user", mEditTextUserName.getText().toString());
+              // getActivity().generatgetInstance();
 
-                Set in first activity fragment:
-
-                Bundle bundle = new Bundle();
-                bundle.putString("your_string_key", "your_value");
-
-                startActivity(new Intent(getActivity() your_second_activity.class).putExtra("bundle_key", bundle));*/
             }
         });
        /////////////////////////////////////////////////////
         return view;
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
 
-        outState.putString(YOUR_TASK, String.valueOf(mEditText_Task));
-       // outState.putInt(YOUR_NUM,mEditText_Num);
-    }
 }

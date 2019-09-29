@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyListActivity"></activity>
-        <activity android:name=".Controler.MyTaskActivity">
+        <activity android:name=".Controler.Task_Pager_Activity"></activity>
+        <activity android:name=".Controler.MyListActivity" />
+        <activity android:name=".Controler.Task_Pager_Fragmen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
